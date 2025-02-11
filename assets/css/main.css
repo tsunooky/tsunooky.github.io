@@ -1,11 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
 
-/*
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -21,13 +16,45 @@ section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
+
+
+#timer-container {
+	color: #FFFFFF;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.countdown-item {
+	display: inline-block;
+	font-size: 2em;
+	list-style-type: none;
+	padding: 0.5em;
+	text-transform: uppercase;
+	font-family: "Courier New", monospace, serif;
+	margin-bottom: 2em;
+}
+
+.countdown-value {
+	display: block;
+	font-size: 4.5rem;
+	font-family: "Courier New", monospace, serif;
+	margin-top: -2rem;
+	margin-bottom: -0.8em;
+}
+
+.emoji {
+	display: none;
+	padding: 1rem;
+	font-size: 4rem;
+}
+
+
+
 
 body {
 	line-height: 1;
@@ -42,8 +69,6 @@ blockquote, q {
 }
 
 	blockquote:before, blockquote:after, q:before, q:after {
-		content: '';
-		content: none;
 	}
 
 table {
@@ -75,7 +100,7 @@ input, select, textarea {
 /* Basic */
 
 	@-ms-viewport {
-		width: device-width;
+		width: auto;
 	}
 
 	body {
@@ -2914,7 +2939,7 @@ input, select, textarea {
 		header > .date {
 			display: block;
 			font-size: 0.8rem;
-			height: 1;
+			height: 1rem;
 			margin: 0 0 1rem 0;
 			position: relative;
 		}
@@ -3102,9 +3127,8 @@ input, select, textarea {
 /* Pagination */
 
 	.pagination {
-		display: -moz-inline-flex;
-		display: -webkit-inline-flex;
-		display: -ms-inline-flex;
+		display: inline-flex;
+		display: -ms-inline-flexbox;
 		display: inline-flex;
 		-moz-user-select: none;
 		-webkit-user-select: none;
@@ -3298,9 +3322,9 @@ input, select, textarea {
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
 		flex-direction: column;
-		-moz-justify-content: -moz-flex-end;
-		-webkit-justify-content: -webkit-flex-end;
-		-ms-justify-content: -ms-flex-end;
+		-moz-justify-content: flex-end;
+		-webkit-justify-content: flex-end;
+		-ms-justify-content: flex-end;
 		justify-content: flex-end;
 		-moz-transition: opacity 1s ease, -moz-transform 1s ease;
 		-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
@@ -3310,7 +3334,7 @@ input, select, textarea {
 		cursor: default;
 		text-align: center;
 		z-index: 1;
-		min-height: 100vh;
+		min-height: 76vh;
 	}
 
 		#intro input, #intro select, #intro textarea {
@@ -3506,9 +3530,9 @@ input, select, textarea {
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
 		flex-direction: column;
-		-moz-justify-content: -moz-flex-end;
-		-webkit-justify-content: -webkit-flex-end;
-		-ms-justify-content: -ms-flex-end;
+		-moz-justify-content: flex-end;
+		-webkit-justify-content: flex-end;
+		-ms-justify-content: flex-end;
 		justify-content: flex-end;
 		pointer-events: none;
 		-moz-user-select: none;
@@ -3833,7 +3857,7 @@ input, select, textarea {
 			-ms-flex-wrap: wrap;
 			flex-wrap: wrap;
 			-moz-align-items: -moz-stretch;
-			-webkit-align-items: -webkit-stretch;
+			-webkit-align-items: stretch;
 			-ms-align-items: -ms-stretch;
 			align-items: stretch;
 			text-align: center;
@@ -4280,9 +4304,9 @@ input, select, textarea {
 					}
 
 					#footer > section.split.contact > section.alt {
-						-moz-align-items: -moz-flex-start;
-						-webkit-align-items: -webkit-flex-start;
-						-ms-align-items: -ms-flex-start;
+						-moz-align-items: flex-start;
+						-webkit-align-items: flex-start;
+						-ms-align-items: flex-start;
 						align-items: flex-start;
 					}
 

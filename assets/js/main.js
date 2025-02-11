@@ -1,10 +1,35 @@
-/*
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 (function($) {
+
+	// TIMER
+	const second = 1000,
+		minute = second * 60,
+		hour = minute * 60,
+		day = hour * 24;
+
+	// Target date: June 23, 2025, 7:55 AM (French Time Zone)
+	const countDown = new Date("June 23, 2025 07:55:00 GMT+0200").getTime();
+
+	const x = setInterval(function () {
+		const now = new Date().getTime(),
+			distance = countDown - now;
+
+		document.getElementById("days").innerText = Math.floor(distance / day);
+		document.getElementById("hours").innerText = Math.floor((distance % day) / hour);
+		document.getElementById("minutes").innerText = Math.floor((distance % hour) / minute);
+		document.getElementById("seconds").innerText = Math.floor((distance % minute) / second);
+
+		if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("headline").innerText = "I'm landing!!";
+			document.getElementById("countdown").style.display = "none";
+			document.getElementById("content").style.display = "block";
+		}
+	}, 1000);
+
+
+
+
+
 
 	var	$window = $(window),
 		$body = $('body'),
