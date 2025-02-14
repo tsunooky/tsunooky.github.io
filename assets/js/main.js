@@ -27,8 +27,24 @@
 	}, 1000);
 
 
+	document.addEventListener('DOMContentLoaded', function() {
+		const imgs = document.querySelectorAll('img');
+		const fullPage = document.querySelector('#fullpage');
+		const closeButton = document.querySelector('#closeButton');
+		const caption = document.querySelector('#caption');
 
+		imgs.forEach(img => {
+			img.addEventListener('click', function() {
+				fullPage.style.backgroundImage = 'url(' + img.src + ')';
+				caption.textContent = img.alt;
+				fullPage.style.display = 'block';
+			});
+		});
 
+		closeButton.addEventListener('click', function() {
+			fullPage.style.display = 'none';
+		});
+	});
 
 
 	var	$window = $(window),
