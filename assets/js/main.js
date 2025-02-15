@@ -88,12 +88,12 @@
 		var	$window = $(window),
 			$this = $(this);
 
-		if (this.length == 0 || intensity === 0)
+		if (this.length === 0 || intensity === 0)
 			return $this;
 
 		if (this.length > 1) {
 
-			for (var i=0; i < this.length; i++)
+			for (let i=0; i < this.length; i++)
 				$(this[i])._parallax(intensity);
 
 			return $this;
@@ -138,8 +138,8 @@
 			};
 
 			// Disable parallax on ..
-				if (browser.name == 'ie'			// IE
-				||	browser.name == 'edge'			// Edge
+				if (browser.name === 'ie'			// IE
+				||	browser.name === 'edge'			// Edge
 				||	window.devicePixelRatio > 1		// Retina/HiDPI (= poor performance)
 				||	browser.mobile)					// Mobile devices
 					off();
