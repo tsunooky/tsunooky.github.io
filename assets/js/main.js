@@ -47,6 +47,19 @@
 	});
 
 
+	function updateClocks() {
+		const franceTime = new Date().toLocaleString("en-US", { timeZone: "Europe/Paris", hour: '2-digit', minute: '2-digit', hour12: false });
+		const taiwanTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: '2-digit', minute: '2-digit', hour12: false });
+
+		document.getElementById('france-time').textContent = franceTime;
+		document.getElementById('taiwan-time').textContent = taiwanTime;
+	}
+
+	setInterval(updateClocks, 1000);
+	updateClocks();
+
+
+
 	var	$window = $(window),
 		$body = $('body'),
 		$wrapper = $('#wrapper'),
