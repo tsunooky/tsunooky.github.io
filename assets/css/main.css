@@ -55,6 +55,14 @@ footer, header, hgroup, menu, nav, section {
 
 @media screen and (max-width: 736px) {
 
+	#intro {
+		padding: 2rem 1rem; /* Adjust padding as needed */
+	}
+
+	#header {
+		padding-bottom: 2rem; /* Adjust padding as needed */
+	}
+
 	#timer-container {
 		font-size: 0.8em;
 	}
@@ -72,6 +80,15 @@ footer, header, hgroup, menu, nav, section {
 	}
 }
 
+@media screen and (max-width: 480px) {
+	#intro {
+		padding: 1rem 0.5rem; /* Adjust padding as needed */
+	}
+
+	#header {
+		padding-bottom: 1rem; /* Adjust padding as needed */
+	}
+}
 
 
 
@@ -97,7 +114,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 .france {
-	width: 6em; /* Adjust the width as needed */
+	width: 6em;
 	height: 4em;
 	aspect-ratio: 3 / 2;
 	background: linear-gradient(to right, #0055A4 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #EF4135 66.66%); /* France flag */
@@ -153,6 +170,21 @@ footer, header, hgroup, menu, nav, section {
 	background-color: rgba(0, 0, 0, 0.8);
 }
 
+#fullpage button {
+   aspect-ratio: 1 / 1;
+   position: absolute;
+   background-color: rgba(255, 255, 255, 0.5);
+   color: white;
+   border: none;
+   padding: 10px;
+   cursor: pointer;
+   font-size: 32px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
 #closeButton {
     position: absolute;
     top: 10px;
@@ -161,7 +193,7 @@ footer, header, hgroup, menu, nav, section {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    z-index: 10000; /* Ensure it is above the overlay */
+    z-index: 10000;
     font-size: 2rem;
     display: flex;
     align-items: center;
@@ -174,12 +206,25 @@ footer, header, hgroup, menu, nav, section {
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
-	color: rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.8);
 	/*background-color: rgba(0, 0, 0, 0.2);*/
 	border-radius: 5px;
-	max-width: 90%;
+	max-width: 100%;
 	text-align: center;
 	font-size: 2rem;
+	white-space: nowrap;
+}
+
+#prevButton {
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#nextButton {
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 img {
@@ -460,7 +505,7 @@ input, select, textarea {
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #18bfef !important;
+			color: #ffffff !important;
 		}
 
 	strong, b {
@@ -2377,8 +2422,8 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			box-shadow: inset 0 0 0 2px #18bfef;
-			color: #18bfef !important;
+			box-shadow: inset 0 0 0 2px #ffffff;
+			color: #ffffff !important;
 		}
 
 		input[type="submit"].primary,
@@ -2396,7 +2441,7 @@ input, select, textarea {
 			input[type="button"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: #18bfef;
+				background-color: #ffffff;
 			}
 
 /* Form */
@@ -3738,8 +3783,8 @@ input, select, textarea {
 		}
 
 			#header .logo:hover {
-				border-color: #18bfef !important;
-				color: #18bfef !important;
+				border-color: #ffffff !important;
+				color: #ffffff !important;
 			}
 
 		@media screen and (max-width: 980px) {

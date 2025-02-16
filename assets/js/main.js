@@ -31,18 +31,40 @@
 		const imgs = document.querySelectorAll('img');
 		const fullPage = document.querySelector('#fullpage');
 		const closeButton = document.querySelector('#closeButton');
+		const prevButton = document.querySelector('#prevButton');
+		const nextButton = document.querySelector('#nextButton');
 		const caption = document.querySelector('#caption');
+		let currentIndex = 0;
 
-		imgs.forEach(img => {
+		function showImage(index) {
+			fullPage.style.backgroundImage = 'url(' + imgs[index].src + ')';
+			caption.textContent = imgs[index].alt;
+			fullPage.style.display = 'block';
+			currentIndex = index;
+		}
+
+		imgs.forEach((img, index) => {
 			img.addEventListener('click', function() {
-				fullPage.style.backgroundImage = 'url(' + img.src + ')';
-				caption.textContent = img.alt;
-				fullPage.style.display = 'block';
+				showImage(index);
 			});
 		});
 
 		closeButton.addEventListener('click', function() {
 			fullPage.style.display = 'none';
+		});
+
+		prevButton.addEventListener('click', function(event) {
+			event.stopPropagation();
+			if (currentIndex > 0) {
+				showImage(currentIndex - 1);
+			}
+		});
+
+		nextButton.addEventListener('click', function(event) {
+			event.stopPropagation();
+			if (currentIndex < imgs.length - 1) {
+				showImage(currentIndex + 1);
+			}
 		});
 	});
 
