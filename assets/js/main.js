@@ -41,6 +41,10 @@
 			caption.textContent = imgs[index].alt;
 			fullPage.style.display = 'block';
 			currentIndex = index;
+
+			// Hide or show navigation buttons based on the current index
+			prevButton.style.display = currentIndex === 0 ? 'none' : 'block';
+			nextButton.style.display = currentIndex === imgs.length - 1 ? 'none' : 'block';
 		}
 
 		imgs.forEach((img, index) => {
