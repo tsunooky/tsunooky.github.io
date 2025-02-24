@@ -60,9 +60,8 @@ footer, header, hgroup, menu, nav, section {
 	padding: 5px;
 	background-color: #2b2b2b;
 	color: #2b2b2b;
-	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -40%);
+	transform: translate(-50%);
 }
 
 
