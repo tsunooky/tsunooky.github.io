@@ -52,6 +52,19 @@ footer, header, hgroup, menu, nav, section {
 	font-size: 4rem;
 }
 
+#popup {
+	display: none;
+	position: absolute;
+	border-radius: 5px;
+	border: 1px solid #ffffff;
+	padding: 5px;
+	background-color: #2b2b2b;
+	color: #2b2b2b;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -40%);
+}
+
 
 @media screen and (max-width: 734px) {
 

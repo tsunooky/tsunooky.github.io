@@ -26,6 +26,19 @@
 		}
 	}, 1000);
 
+	document.getElementById('info-icon').addEventListener('mouseover', function() {
+		document.getElementById('popup').style.display = 'block';
+	});
+
+	document.getElementById('info-icon').addEventListener('mouseout', function() {
+		document.getElementById('popup').style.display = 'none';
+	});
+
+	document.getElementById('info-icon').addEventListener('click', function() {
+		var popup = document.getElementById('popup');
+		popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+	});
+
 
 	document.addEventListener('DOMContentLoaded', function() {
 		const imgs = document.querySelectorAll('img');
