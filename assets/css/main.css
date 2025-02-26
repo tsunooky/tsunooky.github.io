@@ -246,7 +246,7 @@ footer, header, hgroup, menu, nav, section {
 	text-align: center;
 	font-size: 1.3rem;
 	line-height: 1.3;
-	font-family: Centaur, sans-serif;
+	font-family: Arial,bold, sans-serif;
 }
 
 @media screen and (max-width: 736px) {
@@ -254,7 +254,7 @@ footer, header, hgroup, menu, nav, section {
 		position: absolute;
 		bottom: 10px;
 		width: 95%;
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 	}
 }
 
