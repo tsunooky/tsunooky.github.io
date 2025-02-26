@@ -139,16 +139,15 @@
 			const yDiff = yDown - yUp;
 
 			if (Math.abs(xDiff) > Math.abs(yDiff)) {
-				if (xDiff > 0) {
+				if (xDiff > 0 && currentIndex < imgs.length - 1) {
 					// Swipe left
-					if (currentIndex < imgs.length - 1) {
-						showImage(currentIndex + 1);
-					}
-				} else {
+					showImage(currentIndex + 1);
+				} else if (xDiff < 0 && currentIndex > 0) {
 					// Swipe right
-					if (currentIndex > 0) {
-						showImage(currentIndex - 1);
-					}
+					showImage(currentIndex - 1);
+				} else {
+					// Enable scroll if swipe fails (at first or last image)
+					enableScroll();
 				}
 			}
 
