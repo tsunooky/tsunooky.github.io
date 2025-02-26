@@ -48,6 +48,16 @@
 		const caption = document.querySelector('#caption');
 		let currentIndex = 0;
 
+		function disableScroll() {
+			document.body.style.overflow = 'hidden';
+			document.body.style.touchAction = 'none';
+		}
+
+		function enableScroll() {
+			document.body.style.overflow = '';
+			document.body.style.touchAction = '';
+		}
+
 		function showImage(index) {
 			currentScale = 1;
 			fullPage.style.transform = 'scale(1)';
@@ -55,6 +65,7 @@
 			caption.textContent = imgs[index].alt;
 			fullPage.style.display = 'block';
 			currentIndex = index;
+			disableScroll();
 
 			prevButton.style.display = currentIndex === 0 ? 'none' : 'block';
 			nextButton.style.display = currentIndex === imgs.length - 1 ? 'none' : 'block';
@@ -68,6 +79,7 @@
 
 		closeButton.addEventListener('click', function() {
 			fullPage.style.display = 'none';
+			enableScroll();
 		});
 
 		prevButton.addEventListener('click', function(event) {
@@ -84,10 +96,17 @@
 			}
 		});
 
+		fullPage.addEventListener('click', function(event) {
+			if (event.target === fullPage) {
+				enableScroll();
+			}
+		});
+
 		document.addEventListener('keydown', function(event) {
 			if (fullPage.style.display === 'block') {
 				if (event.key === 'Escape') {
 					fullPage.style.display = 'none';
+					enableScroll();
 				} else if (event.key === 'ArrowLeft' && currentIndex > 0) {
 					showImage(currentIndex - 1);
 				} else if (event.key === 'ArrowRight' && currentIndex < imgs.length - 1) {
