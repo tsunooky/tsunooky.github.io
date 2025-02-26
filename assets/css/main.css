@@ -129,7 +129,7 @@ footer, header, hgroup, menu, nav, section {
 	aspect-ratio: 3 / 2;
 	position: relative;
 	background:
-			linear-gradient(rgb(19, 53, 129) 0 0) 0 0 / 50% 50% no-repeat,
+			linear-gradient(rgb(19, 53, 129), rgb(19, 53, 129)) 0 0 / 50% 50% no-repeat,
 			rgb(205, 44, 36);
 
 	&::before {
@@ -160,6 +160,8 @@ footer, header, hgroup, menu, nav, section {
 
 
 #fullpage {
+	transform-origin: center;
+	transition: transform 0.3s ease-out;
 	display: none;
 	position: fixed;
 	z-index: 9999;
@@ -170,76 +172,148 @@ footer, header, hgroup, menu, nav, section {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.zoomable {
+	touch-action: none;
 }
 
 #fullpage button {
-   aspect-ratio: 1 / 1;
-   position: absolute;
-   background-color: rgba(255, 255, 255, 0.1);
-   color: white;
-   border: none;
-   padding: 10px;
-   cursor: pointer;
-   font-size: 32px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+	aspect-ratio: 1 / 1;
+	position: absolute;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: white;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	line-height: 1;
 }
 
 
 #closeButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    z-index: 10000;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	aspect-ratio: 1/1;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	z-index: 10000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.7rem;
+}
+
+#closeButton::before,
+#closeButton::after {
+	content: '';
+	position: absolute;
+	width: 24px;
+	height: 2px;
+	background-color: #212931;
+}
+
+#closeButton::before {
+	transform: rotate(45deg);
+}
+
+#closeButton::after {
+	transform: rotate(-45deg);
+}
+
+#closeButton:hover {
+	background-color: #ffffff;
 }
 
 
 #caption {
 	position: absolute;
-	bottom: 0;
+	bottom: 8px;
 	left: 50%;
 	transform: translateX(-50%);
-	color: rgba(255, 255, 255, 0.8);
-	/*background-color: rgba(0, 0, 0, 0.2);*/
+	color: rgba(255, 255, 255, 1);
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 	border-radius: 5px;
-	max-width: 100%;
+	width: 75%;
 	text-align: center;
-	font-size: 2rem;
-	white-space: nowrap;
+	font-size: 1.3rem;
+	line-height: 1.3;
+	font-family: Dubai, sans-serif;
+}
+
+@media screen and (max-width: 736px) {
+	#caption {
+
+		margin-top: 0.5rem;
+		width: 90%;
+		font-size: 1rem;
+		text-shadow: none;
+	}
 }
 
 #prevButton {
-	left: 10px;
-	top: 50%;
-	transform: translateY(-50%);
+	font-size: 4rem;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: calc((100vw - min(100vh * 4/3, 100vw))/2);
+	height: 100%;
+	transform: none;
+	font-family: Candara, sans-serif;
 }
 
 #nextButton {
-	right: 10px;
-	top: 50%;
-	transform: translateY(-50%);
+	font-size: 4rem;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: calc((100vw - min(100vh * 4/3, 100vw))/2);
+	height: 100%;
+	transform: none;
+	font-family: Candara, sans-serif;
+}
+
+@media screen and (max-width: 480px) {
+	#prevButton,
+	#nextButton {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 480px), (max-aspect-ratio: 10/7) {
+	#prevButton,
+	#nextButton {
+		display: none !important;
+	}
 }
 
 
+
+@media screen and (max-width: 480px) {
+	#navPanelToggle {
+		display: none !important;
+	}
+
+	#navPanel {
+		display: none !important;
+	}
+}
 
 img {
 	cursor: pointer;
-	transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for both hover and non-hover states */
+	transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
 }
 
 img:hover {
-	transform: scale(1.05); /* Slightly scale up the image */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow effect on hover */
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -2427,8 +2501,10 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
+			/*
 			box-shadow: inset 0 0 0 2px #ffffff;
 			color: #ffffff !important;
+			 */
 		}
 
 		input[type="submit"].primary,

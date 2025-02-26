@@ -28,10 +28,15 @@
 
 
 
+
+
 	document.getElementById('info-icon').addEventListener('click', function() {
 		var popup = document.getElementById('popup');
 		popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
 	});
+
+
+
 
 
 	document.addEventListener('DOMContentLoaded', function() {
@@ -44,12 +49,13 @@
 		let currentIndex = 0;
 
 		function showImage(index) {
+			currentScale = 1;
+			fullPage.style.transform = 'scale(1)';
 			fullPage.style.backgroundImage = 'url(' + imgs[index].src + ')';
 			caption.textContent = imgs[index].alt;
 			fullPage.style.display = 'block';
 			currentIndex = index;
 
-			// Hide or show navigation buttons based on the current index
 			prevButton.style.display = currentIndex === 0 ? 'none' : 'block';
 			nextButton.style.display = currentIndex === imgs.length - 1 ? 'none' : 'block';
 		}
@@ -77,6 +83,60 @@
 				showImage(currentIndex + 1);
 			}
 		});
+
+		document.addEventListener('keydown', function(event) {
+			if (fullPage.style.display === 'block') {
+				if (event.key === 'Escape') {
+					fullPage.style.display = 'none';
+				} else if (event.key === 'ArrowLeft' && currentIndex > 0) {
+					showImage(currentIndex - 1);
+				} else if (event.key === 'ArrowRight' && currentIndex < imgs.length - 1) {
+					showImage(currentIndex + 1);
+				}
+			}
+		});
+
+		fullPage.addEventListener('touchstart', handleTouchStart, false);
+		fullPage.addEventListener('touchmove', handleTouchMove, false);
+
+		let xDown = null;
+		let yDown = null;
+
+		function handleTouchStart(evt) {
+			const firstTouch = evt.touches[0];
+			xDown = firstTouch.clientX;
+			yDown = firstTouch.clientY;
+		}
+
+		function handleTouchMove(evt) {
+			if (!xDown || !yDown) {
+				return;
+			}
+
+			const xUp = evt.touches[0].clientX;
+			const yUp = evt.touches[0].clientY;
+
+			const xDiff = xDown - xUp;
+			const yDiff = yDown - yUp;
+
+			if (Math.abs(xDiff) > Math.abs(yDiff)) {
+				if (xDiff > 0) {
+					// Swipe left
+					if (currentIndex < imgs.length - 1) {
+						showImage(currentIndex + 1);
+					}
+				} else {
+					// Swipe right
+					if (currentIndex > 0) {
+						showImage(currentIndex - 1);
+					}
+				}
+			}
+
+			// Reset values
+			xDown = null;
+			yDown = null;
+		}
 	});
 
 
